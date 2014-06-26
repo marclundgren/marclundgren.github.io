@@ -47,8 +47,8 @@ header h2 {
 }
 
 .main-content {
-  width: 690px;
-  float: left;
+  /*width: 690px;
+  float: left;*/
 }
 
 .main-content img {
@@ -323,7 +323,7 @@ footer a:hover {
   header .button-container {
     display: table-cell;
     padding-left: 1em;
-    /*max-width: 141px;*/
+    max-width: 140px;
 
     /*display: inline-block;*/
     /*width: 135px;*/
