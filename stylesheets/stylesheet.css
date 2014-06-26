@@ -68,7 +68,7 @@ header h2 {
   color: #666;
 }
 
-#downloads .btn {
+#externalLinks .btn {
   display: inline-block;
   text-align: center;
   margin: 0;
@@ -220,6 +220,11 @@ hr {
 .btn-github .icon {
   opacity: 0.6;
   background: url("../images/blacktocat.png") 0 0 no-repeat;
+}
+
+.btn-codepen .icon {
+  opacity: 0.6;
+  background: url("../images/codepen-logo.png") 0 0 no-repeat;
 }
 
 /* Links
