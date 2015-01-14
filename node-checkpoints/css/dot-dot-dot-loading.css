@@ -1,0 +1,72 @@
+/* The dot. Inspired by http://codepen.io/TheDutchCoder/pen/DkFEh*/
+.dot {
+  /* Box Model */
+  top: 50%;
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  border-radius: 999px;
+  background-color: #00e6ff;
+
+
+  /* Layout */
+  float: left;
+  position: relative;
+  z-index: 10;
+
+  /* Other */
+  animation: loader 2s cubic-bezier(0.5, 0, 0.5, 1) 0s infinite;
+  -webkit-animation: loader 2s cubic-bezier(0.5, 0, 0.5, 1) 0s infinite;
+  -moz-animation: loader 2s cubic-bezier(0.5, 0, 0.5, 1) 0s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+  background-color: #0066ff;
+  z-index: 9;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+  background-color: #00ff99;
+  z-index: 8;
+}
+
+@keyframes loader {
+  0% {
+    left: 10%;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+  }
+  50% {
+    left: 90%;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes loader {
+  0% {
+    left: 10%;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+  }
+  50% {
+    left: 90%;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+  }
+}
+
+.loader {
+  height: 100px;
+  text-align: center;
+  width: 400px;
+}

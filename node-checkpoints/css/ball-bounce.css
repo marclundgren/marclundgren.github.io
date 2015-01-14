@@ -1,0 +1,69 @@
+html {
+  height: 100%;
+
+  background-color: hsla(10,40%,50%,1);
+
+  background-image:
+    radial-gradient(
+      hsla(50,80%,80%,1) 30%,
+      transparent 35%
+      ),
+    radial-gradient(
+      hsla(0,0%,0%,.1),
+      transparent 35%
+      );
+
+  background-position: 50% 50%, 50% calc(50% + .3em);
+  background-size: 2em 2em, 3em 1em;
+  background-repeat: no-repeat;
+
+  /*animation: bounce 1s infinite;*/
+  -webkit-animation: bounce 1s infinite;
+  -moz-animation: bounce 1s infinite;
+  }
+
+@keyframes bounce {
+  0% {
+    background-position: 50% calc(50% - 4em), 50% calc(50% + .4em);
+    background-size: 2em 2em, 1em 1em;
+    }
+  40% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 2em, 3em 1em;
+    }
+  45% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 1.5em, 3em 1em;
+    }
+  50% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 1em, 3em 1em;
+    }
+  100% {
+    background-position: 50% calc(50% - 4em), 50% calc(50% + .3em);
+    background-size: 2em 2em, 1em 1em;
+    }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    background-position: 50% calc(50% - 4em), 50% calc(50% + .4em);
+    background-size: 2em 2em, 1em 1em;
+    }
+  40% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 2em, 3em 1em;
+    }
+  45% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 1.5em, 3em 1em;
+    }
+  50% {
+    background-position: 50% 50%, 50% calc(50% + .3em);
+    background-size: 2em 1em, 3em 1em;
+    }
+  100% {
+    background-position: 50% calc(50% - 4em), 50% calc(50% + .3em);
+    background-size: 2em 2em, 1em 1em;
+    }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+    <script src="../build/aui/aui.js"></script>
+    <style>
+    .navbar-inner {
+        border-radius: 0;
+    }
+
+    .navbar .nav-collapse.expanded {
+        height: auto;
+    }
+
+    .span4 {
+        background-color: #BBD8E9;
+        height: 20em;
+        overflow: auto;
+    }
+    .span8 {
+        background-color: #DCEAF4;
+    }
+
+    .spacer {
+        height: 30em;
+    }
+
+    #demo {
+        margin: 2em;
+    }
+    #demo p {
+        padding: 2em;
+    }
+
+    .example-js {
+        width: 600px;
+    }
+
+    #checkpointNotify {
+        background-color: #BB213E;
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="../../">.. back</a>
+
+                <div class="collapse nav-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="..">Documentation</a>
+                        </li>
+                        <li class="active">
+                            <a href=".">Simple Checkpoints</a>
+                        </li>
+                        <li>
+                            <a href="../infinite-scroll/">Infinite Scroll</a>
+                        </li>
+                        <li>
+                            <a href="../yql-news">Infinite Results: YQL news</a>
+                        </li>
+                        <li>
+                            <a href="../sticky-element">Sticky Element</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid">
+        <h1>AlloyUI - Node Checkpoints</h1>
+
+        <p class="lead">Crossing a checkpoint changes its background to green. Checkpoints are marked as red before they are reached. Upon a cross it in the reverse direction, its background changes to white.</p>
+
+        <h3>Javascript</h3>
+
+        <p>Checkpoints are compatible with single Nodes and NodeLists. Here, we create a simple class toggle, based on direction, for a list of all paragraphs in the demo...</p>
+
+<pre class="example-js">
+var checkpointNodes = Y.all('#simple-checkpoints .column p');
+
+checkpointNodes.setStyle('backgroundColor', 'red');
+
+checkpointNodes.checkpoint(
+    function(direction){
+        var node = this.getNode();
+
+        var color = (direction === 'down') ? 'green' : 'white';
+
+        node.setStyle('backgroundColor', color);
+
+        node.text('checkpoint reached scrolling ' + direction + '!');
+    },
+    {
+        context: '.column'
+    }
+);
+</pre>
+
+        <div id="demo">
+            <div class="span8">
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+            </div>
+
+            <div class="span4">
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+
+                <hr />
+
+                <p>Checkpoint!</p>
+
+                <hr class="spacer" />
+            </div>
+        </div>
+    </div>
+    <script>
+    YUI({filter: 'raw'}).use('aui-node-checkpoints', function(Y) {
+        var demoNodesA = Y.all('.span8 p');
+        var demoNodesB = Y.all('.span4 p');
+
+        var onCheckpoint = function(direction){
+            var backgroundColor;
+
+            if (direction === 'down') {
+                backgroundColor = 'green';
+                color = 'white';
+            }
+            else if (direction === 'up') {
+                backgroundColor = 'white';
+                color = 'black';
+            }
+
+            var node = this.getNode();
+
+            node.setStyle('backgroundColor', backgroundColor);
+            node.setStyle('color', color);
+
+            node.text('checkpoint reached scrolling ' + direction + '!');
+
+            // this.destroy();
+        };
+
+        demoNodesA.checkpoint(onCheckpoint);
+        demoNodesB.checkpoint(onCheckpoint, {context: '.span4'});
+
+        demoNodesA.setStyle('backgroundColor', 'red');
+        demoNodesB.setStyle('backgroundColor', 'red');
+    });
+
+    </script>
+</body>
+</html>

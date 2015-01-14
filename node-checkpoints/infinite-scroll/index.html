@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../css/dot-dot-dot-loading.css">
+    <script src="../build/aui/aui.js"></script>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    hr {
+        padding: 2em;
+    }
+
+    pre {
+        font-size: 12px;
+        width: 650px;
+    }
+
+    .navbar-inner {
+        border-radius: 0;
+    }
+
+    #infinteScrollColours .infinite-list {
+        background: rgb(147, 177, 181);
+        height: 30em;
+        margin-left: 0;
+        max-width: 37em;
+        overflow: auto;
+    }
+
+    #infinteScrollColours .infinite-list li {
+        background: #444A50;
+        display: block;
+        float: left;
+        height: 10em;
+        margin: 1.5em 0 1.5em 1.5em;
+        width: 10em;
+    }
+
+    .demo .templates, #infinteScrollYQL .template {
+        display: none;
+    }
+
+    .demo .template-loader .message h4 {
+        padding-bottom: 10em;
+    }
+
+    .demo .stories .body {
+        max-width: 60em;
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="../../">.. back</a>
+
+                <div class="collapse nav-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="..">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="../simple-checkpoint">Simple Checkpoints</a>
+                        </li>
+                        <li class="active">
+                            <a href=".">Infinite Scroll</a>
+                        </li>
+                        <li>
+                            <a href="../yql-news">Infinite Results: YQL news</a>
+                        </li>
+                        <li>
+                            <a href="../sticky-element">Sticky Element</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>AlloyUI - Node Checkpoints - Infinite Scroll</h1>
+
+        <hr>
+
+        <div id="infinteScrollColours">
+            <h2>Example: infinite colours</h3>
+
+            <p class="lead">
+                By configuring a Checkpoint with an offset set to the string: <code>'end'</code>, we can apply actions when the we reach the end of a Scroll Context.
+            </p>
+
+            <div>
+                <p>
+                    Scroll down to the bottom of a context, and load more colourful boxes to the bottom of our context. Remember to refresh the checkpoint after you've changed the height of the context element (i.e. appended elements).
+                </p>
+
+                <h4>Style</h4>
+
+                <p>
+                    Define your infinite list container. Be sure to set overflow to auto and give it some height. Mine looks like this...
+                </p>
+<pre>
+.infinite-list {
+    background: rgb(147, 177, 181);
+    height: 30em;
+    max-width: 37em;
+    overflow: auto;
+}
+</pre>
+
+                <p>
+                    Next, let's define our list item styles. Here are mine...
+                </p>
+
+<pre>
+.infinite-list li {
+    background: #444a50;
+    display: block;
+    float: left;
+    height: 10em;
+    margin: 1.5em 0 1.5em 1.5em;
+    width: 10em;
+}
+</pre>
+
+                <h4>Javascript</h4>
+
+                <p>Finally, add in some javascript</p>
+<pre>
+YUI().use('aui-node-checkpoints', function(Y) {
+   function randomColor() {
+       return '#' + Math.floor(Math.random() * 16777215).toString(16);
+   };
+
+   var infiniteList = Y.one('#infinteScrollColours .infinite-list');
+
+   infiniteList.checkpoint(function(direction) {
+       var liString = '&lt;li&gt;&lt;/li&gt;';
+       var newNodes = Y.all(Y.Node.create(liString));
+
+       newNodes.push(Y.Node.create(liString));
+       newNodes.push(Y.Node.create(liString));
+
+       newNodes.setStyle('backgroundColor', randomColor());
+
+       newNodes.appendTo(infiniteList);
+
+       // remember to refresh after appending elements to the container
+       this.refresh();
+   },{
+       triggerAtTheEnd: true,
+       context: infiniteList
+   });
+});
+</pre>
+
+            </div>
+
+            <h2>Demo</h3>
+            <ul class="infinite-list">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <script>
+            YUI().use('aui-node-checkpoints', function(Y) {
+                function randomColor() {
+                    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+                };
+
+                var infiniteList = Y.one('#infinteScrollColours .infinite-list');
+
+                infiniteList.checkpoint(function(direction) {
+                    var newNodes = Y.all(Y.Node.create('<li></li>'));
+
+                    newNodes.push(Y.Node.create('<li></li>'));
+                    newNodes.push(Y.Node.create('<li></li>'));
+
+                    newNodes.setStyle('backgroundColor', randomColor());
+
+                    newNodes.appendTo(infiniteList);
+
+                    this.refresh(); // required when appending nodes to the container
+                }, {
+                    context: infiniteList,
+                    triggerAtTheEnd: true
+                });
+            });
+            </script>
+        </div>
+
+        <hr>
+
+        <div id="infinteScrollYQL">
+            <h2>Example: Infinite Scrolling News Feed</h3>
+
+            <p class="lead">Here is a real world example of using Checkpoints to handle Infinite Scrolling with YQL.</p>
+
+            <h4>Markup</h4>
+
+<pre>
+&lt;div class="stories"&gt;&lt;/div&gt;
+
+&lt;div class="templates"&gt;
+    &lt;div class="template-content"&gt;
+        &lt;h2&gt;&lt;a class="title" href="javascript:void(0)"&gt;&lt;/a&gt;&lt;/h2&gt;
+
+        &lt;div class="body"&gt;
+            &lt;p&gt;
+                Sirloin hamburger bacon meatball jowl beef salami corned beef,
+                filet mignon turducken pork pork chop.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Spare ribs chicken porchetta, pork loin ribeye sirloin boudin
+                salami. Kevin turducken doner ground round pastrami beef ribs
+                shank pork loin, tail biltong. Meatloaf jerky turducken turkey
+                swine beef chuck shank landjaeger. Pancetta swine leberkas
+                frankfurter hamburger, pastrami t-bone sirloin cow shankle
+                chuck.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Bacon landjaeger cow tail, meatball porchetta ground round
+                rump prosciutto. Kielbasa bacon pig tail. Jowl bresaola salami
+                andouille boudin turkey tri-tip, fatback corned beef pork
+                swine hamburger leberkas. Beef ribs cow capicola shankle,
+                sausage meatball doner swine turkey biltong. T-bone pastrami
+                landjaeger fatback doner pancetta.
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="template-loader"&gt;
+        &lt;div class="loader"&gt;
+            &lt;div class="dot"&gt;&lt;/div&gt;
+            &lt;div class="dot"&gt;&lt;/div&gt;
+            &lt;div class="dot"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="message"&gt;
+            &lt;h4&gt;I'm fetching more stories. Please be patient :)&lt;/h4&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+                <h4>Javascript</h4>
+<pre>
+var LIMIT = 4;
+var URL = 'http://rss.news.yahoo.com/rss/topstories';
+
+YUI().use('aui-node-checkpoints', 'yql', function(Y) {
+    var checkpoint,
+        loadingEl = Y.one('.template-loader');
+        stories = Y.one('.stories'),
+        tplContent = Y.one('.template-content'),
+        tplStatement = 'select title from rss where url="{url}" limit {limit} offset {offset}',
+        offset = 0;
+
+    function addStoriesCheckpoint() {
+        stories.checkpoint(function(direction) {
+            if (direction === 'down') {
+                checkpoint = this;
+
+                checkpoint.disable();
+
+                getStories();
+            }
+        }, {
+            triggerAtTheEnd: true
+        });
+    }
+
+    function getStories() {
+        stories.append(loadingEl.show());
+
+        offset += 4;
+
+        var statement = Y.Lang.sub(tplStatement, {
+            offset: offset,
+            limit: LIMIT,
+            url: URL
+        });
+
+        setTimeout(function() {
+            Y.YQL(statement, function(response) {
+                loadingEl.hide();
+
+                var results = response.query.results;
+
+                if (results) {
+                    Y.Array.each(results.item, function(item) {
+                        var el = tplContent.clone();
+
+                        el.one('.title').text(item.title);
+
+                        stories.append(el);
+                    });
+
+                    if (checkpoint) {
+                        checkpoint.enable();
+                    }
+                    else {
+                        addStoriesCheckpoint();
+                    }
+                }
+                else {
+                    offset = 0;
+
+                    checkpoint.enable();
+
+                    getStories();
+                }
+            });
+
+            offset += 10;
+        }, 2000);
+    }
+
+    getStories();
+});
+</pre>
+
+            <h4>Style</h4>
+<pre>
+.demo .templates {
+    display: none;
+}
+
+.demo .template-loader .message h4 {
+    padding-bottom: 10em;
+}
+
+.demo .stories .body {
+    max-width: 60em;
+}
+</pre>
+
+            <div class="demo" class="">
+                <h4>Demo</h4>
+
+                <div class="stories"></div>
+
+                <div class="templates">
+                    <div class="template-content">
+                        <h2><a class="title" href="javascript:void(0)"></a></h2>
+
+                        <div class="body">
+                            <p>
+                                Sirloin hamburger bacon meatball jowl beef salami corned beef,
+                                filet mignon turducken pork pork chop.
+                            </p>
+
+                            <p>
+                                Spare ribs chicken porchetta, pork loin ribeye sirloin boudin
+                                salami. Kevin turducken doner ground round pastrami beef ribs
+                                shank pork loin, tail biltong. Meatloaf jerky turducken turkey
+                                swine beef chuck shank landjaeger. Pancetta swine leberkas
+                                frankfurter hamburger, pastrami t-bone sirloin cow shankle
+                                chuck.
+                            </p>
+
+                            <p>
+                                Bacon landjaeger cow tail, meatball porchetta ground round
+                                rump prosciutto. Kielbasa bacon pig tail. Jowl bresaola salami
+                                andouille boudin turkey tri-tip, fatback corned beef pork
+                                swine hamburger leberkas. Beef ribs cow capicola shankle,
+                                sausage meatball doner swine turkey biltong. T-bone pastrami
+                                landjaeger fatback doner pancetta.
+                            </p>
+
+                            <p>
+                                <a href="javascript:void(0)">Read More...</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="template-loader">
+                        <div class="loader">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+
+                        <div class="message">
+                            <h4>I'm fetching more stories. Please be patient :)</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        var LIMIT = 4;
+        var URL = 'http://rss.news.yahoo.com/rss/topstories';
+
+
+        YUI().use('aui-node-checkpoints', 'yql', function(Y) {
+            var checkpoint,
+                loadingEl = Y.one('.template-loader');
+                stories = Y.one('.stories'),
+                tplContent = Y.one('.template-content'),
+                tplStatement = 'select title from rss where url="{url}" limit {limit} offset {offset}',
+                offset = 0;
+
+            function addStoriesCheckpoint() {
+                stories.checkpoint(function(direction) {
+                    if (direction === 'down') {
+                        checkpoint = this;
+
+                        checkpoint.disable();
+
+                        getStories();
+                    }
+                }, {
+                    triggerAtTheEnd: true
+                });
+            }
+
+            function getStories() {
+                stories.append(loadingEl.show());
+
+                offset += 4;
+
+                var statement = Y.Lang.sub(tplStatement, {
+                    offset: offset,
+                    limit: LIMIT,
+                    url: URL
+                });
+
+                setTimeout(function() {
+                    Y.YQL(statement, function(response) {
+                        loadingEl.hide();
+
+                        var results = response.query.results;
+
+                        if (results) {
+                            Y.Array.each(results.item, function(item) {
+                                var el = tplContent.clone();
+
+                                el.one('.title').text(item.title);
+
+                                stories.append(el);
+                            });
+
+                            if (checkpoint) {
+                                checkpoint.enable();
+                            }
+                            else {
+                                addStoriesCheckpoint();
+                            }
+                        }
+                        else {
+                            offset = 0;
+
+                            checkpoint.enable();
+
+                            getStories();
+                        }
+                    });
+
+                    offset += 10;
+                }, 2000);
+            }
+
+            getStories();
+        });
+
+        </script>
+    </div>
+</body>
+</html>

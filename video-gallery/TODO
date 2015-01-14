@@ -1,0 +1,49 @@
+app.search = function() {
+  var search = {};
+
+  search.fuzzy = function(str, match) {
+    // todo : memoize/cache
+
+    // normalize
+    str   = str.toLowerCase();
+    match = match.toLowerCase();
+
+    var pattern = match.split('').reduce(function(a,b) {
+      return (a + '.*' + b);
+    });
+
+    return (new RegExp(pattern)).test(str);
+  };
+
+  search.onscroll = function(event) {
+    var target = event.target;
+
+    var crossed = ((target.scrollTop + target.offsetHeight) >= target.scrollHeight);
+    console.log('crossed: ', crossed);
+
+    if (crossed) {
+      app.vm.videoList.next.load();
+    }
+  };
+
+  search.view = function(ctrl) {
+    return m('div.search', {
+      style: {
+        margin: '1em 0'
+      }
+    }, [
+      m('input', {
+        type: 'search',
+        onkeyup: function(event) {
+          app.vm.selectedVideo(null);
+
+          ctrl.binds(event.currentTarget.value);
+        },
+        value: app.vm.filterQuery()
+      }),
+      m('i.fa.fa-search')
+    ]);
+  };
+
+  return search;
+};

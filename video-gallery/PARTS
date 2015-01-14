@@ -1,0 +1,26 @@
+* Search
+* Video Player
+* Category Video List
+* Featured Video List
+
+Model
+
+Autocomplete
+  term
+
+
+Video
+  category
+  keyword
+  thumbail
+  poster
+  title
+  description
+  duration
+  resource
+    ogg
+    mp4
+    webm
+    ogv
+    flash
+

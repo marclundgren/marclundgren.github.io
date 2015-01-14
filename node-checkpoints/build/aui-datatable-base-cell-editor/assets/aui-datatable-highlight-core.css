@@ -1,0 +1,15 @@
+.table-content {
+    position: relative;
+}
+.table-selection {
+    outline: 0;
+}
+
+.table-highlight-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.table-highlight-overlay-active {
+    z-index: 2;
+}
