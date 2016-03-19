@@ -8,6 +8,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.toolbar, .content {
+  min-width: 440px;
+}
+
 .toolbar, .footer {
   background: #03A9F4;
   width: 100%;
