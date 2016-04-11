@@ -51,22 +51,13 @@
           Drag this link: <a
             name="CRMLS Login"
            class="bookmarklet"
-           href="javascript:%20(function()%20{%20%20%20%20var%20LOGIN_URL%20%20=%20'http://www.mrmlsmatrix.com/matrix/login.aspx';%20%20%20var%20LOGIN_PAGE%20=%20'http://idp.crmls.org/idp/Authn/UserPassword';%20%20%20var%20LOCATION%20%20%20=%20window.location+'';%20%20%20%20if%20(LOCATION%20===%20LOGIN_URL%20||%20LOCATION%20===%20LOGIN_PAGE)%20{%20%20%20%20%20%20var%20USERNAME%20=%20'c11279';%20%20%20%20%20var%20PASSWORD%20=%20'stearman1';%20%20%20%20%20%20$('input#j_username').val(USERNAME);%20%20%20%20%20$('input#password').val(PASSWORD);%20%20%20%20%20$('input#j_password').val(PASSWORD);%20%20%20%20%20%20$('form').submit();%20%20%20}%20%20%20%20else%20{%20%20%20%20%20window.location%20=%20LOGIN_URL;%20%20%20}%20})();">
+
+           href="javascript:%20(function()%20{%20%20%20%20var%20LOGIN_URL%20%20=%20'http://www.mrmlsmatrix.com/matrix/login.aspx';%20%20%20var%20LOGIN_PAGE%20=%20'http://idp.crmls.org/idp/Authn/UserPassword';%20%20%20var%20LOCATION%20%20%20=%20window.location+'';%20%20%20var%20STORAGE_USERNAME_KEY%20=%20'CRMLS_USERNAME';%20%20%20var%20STORAGE_PASSWORD_KEY%20=%20'CRMLS_PASSWORD';%20%20%20%20if%20(LOCATION%20===%20LOGIN_URL%20||%20LOCATION%20===%20LOGIN_PAGE)%20{%20%20%20%20%20%20function%20username()%20{%20%20%20%20%20%20%20var%20username%20=%20localStorage.getItem(STORAGE_USERNAME_KEY);%20%20%20%20%20%20%20if%20(!username)%20{%20%20%20%20%20%20%20%20%20username%20=%20prompt('Please%20enter%20your%20CRMLS%20username...');%20%20%20%20%20%20%20%20%20localStorage.setItem(STORAGE_USERNAME_KEY,%20username);%20%20%20%20%20%20%20}%20%20%20%20%20%20%20return%20username;%20%20%20%20%20}%20%20%20%20%20%20function%20password()%20{%20%20%20%20%20%20%20var%20password%20=%20localStorage.getItem(STORAGE_PASSWORD_KEY);%20%20%20%20%20%20%20if%20(!password)%20{%20%20%20%20%20%20%20%20%20password%20=%20prompt('Please%20enter%20your%20CRMLS%20password...');%20%20%20%20%20%20%20%20%20localStorage.setItem(STORAGE_PASSWORD_KEY,%20password);%20%20%20%20%20%20%20}%20%20%20%20%20%20%20return%20password;%20%20%20%20%20}%20%20%20%20%20%20$('input#j_username').val(%20username()%20);%20%20%20%20%20$('input#password').val(%20password()%20);%20%20%20%20%20$('input#j_password').val(%20password()%20);%20%20%20%20%20%20$('form').submit();%20%20%20}%20%20%20%20else%20{%20%20%20%20%20window.location%20=%20LOGIN_URL;%20%20%20}%20})();">
             CRMLS Login
           </a> : to the toolbar.
         </p>
       </div>
     </div>
-
-    <!-- <div id="links" class="item links">
-      <a
-        name="CRMLS Login"
-       class="bookmarklet"
-       href="javascript:%20(function()%20{%20%20%20%20var%20LOGIN_URL%20%20=%20'http://www.mrmlsmatrix.com/matrix/login.aspx';%20%20%20var%20LOGIN_PAGE%20=%20'http://idp.crmls.org/idp/Authn/UserPassword';%20%20%20var%20LOCATION%20%20%20=%20window.location+'';%20%20%20%20if%20(LOCATION%20===%20LOGIN_URL%20||%20LOCATION%20===%20LOGIN_PAGE)%20{%20%20%20%20%20%20var%20USERNAME%20=%20'c11279';%20%20%20%20%20var%20PASSWORD%20=%20'stearman1';%20%20%20%20%20%20$('input#j_username').val(USERNAME);%20%20%20%20%20$('input#password').val(PASSWORD);%20%20%20%20%20$('input#j_password').val(PASSWORD);%20%20%20%20%20%20$('form').submit();%20%20%20}%20%20%20%20else%20{%20%20%20%20%20window.location%20=%20LOGIN_URL;%20%20%20}%20})();">
-        CRMLS Login
-      </a>
-
-    </div> -->
 
     <div class="screen-shots">
       <div class="screen-shot">
