@@ -1,95 +1,88 @@
-<html><head>
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  <style>
-    .block{
-  background-color:black;
-  opacity:0.7;
-  padding:10px;
-}
-.nav-pills{
-  font-family:Oxygen;
-  font-size:1.5em;
-  color:#bdc3c7;
-  background-color:black;
-  opacity: 0.7;
-}
+<html>
+<style>
+  /* .container {
+    display: flex;
+    justify-content: center;
 
-body{
-  background-color:black;
-  font-family:Oxygen;
-}
+} */
 
-h1 /* Bmac */
-    { 
-  padding:0;
-  margin-top:0px;
-  font-size:80px;
-  color:#d35400;
-  align:center;
-}
-h2 /* Junior Programmer */
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .white-bg {
+    /* background-color: white; */
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .transparent-bg {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .padded {
+    padding: 1rem;
+  }
+
+  body {
+    background-image: url("https://i.imgur.com/g0sDwKD.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 1rem;
+  }
+
+  h1
+  /* Bmac */
+
     {
-      padding:0;
-      margin-top:0px;
-      font-size:30px;
-      color: #d35400;
-      align: center;
- }
-.btn-default{
-  color:black;
-  font-size:1.5em;
-  background-color:grey;
-  border-color:black;
-}
+    font-size: 3rem;
+    color: #1abc9c;
+  }
 
-.pageOne{
-  background: url(https://i.imgur.com/g0sDwKD.jpg);
-  background-size:cover;
-  height:2500px;
-  padding: 50px;
-  margin-bottom: ;
-}
+  h2
+  /* Junior Programmer */
+
+    {
+    font-size: 2rem;
+    color: #95a5a6;
+  }
+
+  .full-width {
+    display: block;
+  }
+
+  .skinny-width {
+    display: inline-block;
+  }
 </style>
-</head>
+
 <body>
 
-<header>
-  <link href="https://fonts.google.com/specimen/Oxygen?    selection.family=Oxygen" rel="stylesheet" type="text/css" <="" header="">
+  <!-- https://css-tricks.com/centering-css-complete-guide/ -->
+  <div class="container column">
+    <h1>Brendan "Bmac" McCabe</h1>
+    <h2>Junior Programmer</h2>
+  </div>
 
-<div class="container-fluid" style="
-    height: 100%;
-">
-  <ul class="nav nav-pills">
-    <li>
-      <a href="#">Brendan "Bmac" McCabe</a>
-    </li>
-    <li class="pull-right">
-      <a href="#">About Me</a>
-    </li>
-    <li class="pull-right">
-      <a href="#">Resume</a>
-    </li>
-    
-    <li class="pull-right">
-      <a href="#">Projects</a>
-    </li>
-  </ul>
- <div class="pageOne" style="
-    height: 100%;
-">
-   <div class="block text-center">
-   <h1>Brendan "Bmac" McCabe</h1>
-   <h2>Junior Programmer</h2>
-   </div>
-   <div class="btnList">
-     <a class="btn btn-default" href="#">LinkedIn</a>
-     <a class="btn btn-default" href="#">Github</a>
-     <a class="btn btn-default" href="#">Twitter</a>
-   </div>
-</div>
+  <div class="transparent-bg padded">
 
+    <!-- https://lipsum.com/ -->
+    <a>This is my body</a>
 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-</div></header>
-</body></html>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  </div>
+
+</body>
+
+</html>
