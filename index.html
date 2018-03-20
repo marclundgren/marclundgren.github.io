@@ -12,6 +12,12 @@
     justify-content: flex-start;
   }
 
+  .view-me {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+  }
+
   .column {
     flex-direction: column;
   }
@@ -27,6 +33,12 @@
 
   .padded {
     padding: 0.5rem;
+  }
+
+  .top-row {
+    /* Links to social media */
+    font-size: 1.0rem;
+    color: #2ecc71;
   }
 
   body {
@@ -63,6 +75,12 @@
 </style>
 
 <body>
+
+  <div class="view-me top-row transparent-bg">
+    <a href="https://github.com/bmac51">Github</a>
+    <a href="https://twitter.com/BeastlyBmac">Twitter</a>
+    <a href="https://www.linkedin.com/in/brendan-mccabe-25b182b4/">LinkedIn</a>
+  </div>
 
   <!-- https://css-tricks.com/centering-css-complete-guide/ -->
   <div class="container column">
