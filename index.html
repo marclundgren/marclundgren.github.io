@@ -1,81 +1,108 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="Marc Lundgren is a Front End Software Developer. This site contains some cool projects, a link to Marc&#39;s profile, and more.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Marc Lundgren - Front End Software Developer</title>
+<style>
+  /* .container {
+    display: flex;
+    justify-content: center;
 
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,300">
-  <link rel="stylesheet" href="style.css">
-</head>
+} */
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .view-me {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .white-bg {
+    /* background-color: white; */
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .transparent-bg {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .padded {
+    padding: 0.5rem;
+  }
+
+  .top-row {
+    /* Links to social media */
+    font-size: 1.0rem;
+    color: #2ecc71;
+  }
+
+  body {
+    background-image: url("https://i.imgur.com/2jwg9Df.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 2rem;
+  }
+
+  h1
+  /* Bmac */
+
+    {
+    font-size: 2.5rem;
+    color: #1E2366;
+  }
+
+  h2
+  /* Junior Programmer */
+
+    {
+    font-size: 1.5rem;
+    color: #1E2366;
+  }
+
+  .full-width {
+    display: block;
+  }
+
+  .skinny-width {
+    display: inline-block;
+  }
+</style>
+
 <body>
 
-  <div class="toolbar">
-    <div class="tabs">
-      <ul>
-        <li class="tabitem recent-projects"><a href="#recentProjects">Projects<span></span></a></li>
-        <li class="tabitem profile"><a href="#profile">Profile<span></span></a></li>
-        <li class="tabitem links"><a href="#links">Links<span></span></a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- Recent Projects, Profile, Links -->
-  <div class="content">
-    <a href="//github.com/marclundgren">
-      <div class="profile-marc"></div>
-    </a>
-
-    <div id="recentProjects" class="item recent-projects">
-      <div class="itemhead">
-        <h2>Projects</h2>
-      </div>
-
-      <p><a href="https://github.com/marclundgren/react-native-redux-todo-mvc" class="href">
-        A todo iOS mobile app using React Native, Redux featuring todomvc specs.
-      </a></p>
-      <p><a href="https://github.com/marclundgren/react-redux-nwb" class="href">
-        A todomvc web app using nwb, React, and Redux.
-      </a></p>
-
-      <p><a href="//marclundgren.github.io/backbone-react-calendar/public">Google Multi Calendar</a></p>
-      <p><a href="node-checkpoints">Alloy-UI Node Checkpoints</a></p>
-    </div>
-
-    <div id="profile" class="item profile">
-      <div class="itemhead">
-        <h2>Profile</h2>
-      </div>
-
-      <p><a href="//registry.jsonresume.org/marclundgren">Resume</a></p>
-    </div>
-
-    <div id="links" class="item links">
-      <div class="itemhead">
-        <h2>Links</h2>
-      </div>
-
-      <p><a href="//github.com/marclundgren">Github</a></p>
-      <p><a href="//codepen.io/marclundgren">Codepen</a></p>
-      <p><a href="//medium.com/@then_marc_says">Blog</a></p>
-    </div>
+  <div class="view-me top-row transparent-bg">
+    <a href="https://github.com/bmac51">Github</a>
+    <a href="https://twitter.com/BeastlyBmac">Twitter</a>
+    <a href="https://www.linkedin.com/in/brendan-mccabe-25b182b4/">LinkedIn</a>
   </div>
 
-  <!-- <div class="footer">
-    <p>
-      <a href="//github.com/marclundgren/marclundgren.github.io">github</a>
+  <!-- https://css-tricks.com/centering-css-complete-guide/ -->
+  <div class="container column">
+    <h1>Brendan "Bmac" McCabe</h1>
+    <h2>Portfolio</h2>
+  </div>
+
+  <div class="transparent-bg padded">
+
+    <!-- https://lipsum.com/ -->
+    <a>About Me:</a>
+
+    <p>This is where I will post podcasts, coding projects, videos, and writing samples.
     </p>
-  </div> -->
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <p>My name is Brendan, or Bmac. I am a young adult who resides in Orange County, California. I have many hobbies including podcasting, video games, anime, cycling, martial-arts, coding, and writing. I volunteer at my church and value the relationships in my life. My sense of humor and positive attitude are an essential piece of each day that I spend on this earth. If you ever see me, please introduce yourself. I would love to meet you. I am...
+    </p>
 
-    ga('create', 'UA-57959173-1', 'auto');
-    ga('send', 'pageview');
+    <p>For I know that iron sharpens iron.
+    </p>
+  </div>
 
-  </script>
 </body>
+
 </html>
