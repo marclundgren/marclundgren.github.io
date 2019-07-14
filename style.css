@@ -8,10 +8,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.toolbar, .content {
-  min-width: 440px;
-}
-
 .toolbar, .footer {
   background: #03A9F4;
   width: 100%;
@@ -32,15 +28,10 @@ body {
   text-decoration: underline;
 }
 
-.tabs ul {
-  list-style: none;
-  margin: 0;
-  overflow: hidden;
-  padding: 0 0 0 1em;
-}
-
-.tabs ul li {
-  display: inline;
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tabs a {
@@ -111,7 +102,8 @@ body {
 .item {
   text-align: left;
   background: white;
-  width: 440px;
+  /* width: 440px; */
+  max-width: 440px;
   padding-bottom: 30px;
   margin: 0 auto 2em;
 }

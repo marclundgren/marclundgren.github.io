@@ -13,11 +13,21 @@
 
   <div class="toolbar">
     <div class="tabs">
-      <ul>
-        <li class="tabitem recent-projects"><a href="#recentProjects">Projects<span></span></a></li>
-        <li class="tabitem profile"><a href="#profile">Profile<span></span></a></li>
-        <li class="tabitem links"><a href="#links">Links<span></span></a></li>
-      </ul>
+      <div class="tabitem profile">
+          <a href="#blog">
+            Blog
+          </a>
+        </div>
+      <div class="tabitem recent-projects">
+        <a href="#recentProjects">
+          Projects
+        </a>
+      </div>
+      <div class="tabitem links">
+        <a href="#links">
+          Links
+        </a>
+      </div>
     </div>
   </div>
   <!-- Recent Projects, Profile, Links -->
@@ -25,6 +35,14 @@
     <a href="//github.com/marclundgren">
       <div class="profile-marc"></div>
     </a>
+
+    <div id="blog" class="item profile">
+        <div class="itemhead">
+          <h2>Blog</h2>
+        </div>
+
+        <p><a href="/blog">Some Things I've Learned</a></p>
+      </div>
 
     <div id="recentProjects" class="item recent-projects">
       <div class="itemhead">
@@ -35,19 +53,11 @@
         A todo iOS mobile app using React Native, Redux featuring todomvc specs.
       </a></p>
       <p><a href="https://github.com/marclundgren/react-redux-nwb" class="href">
-        A todomvc web app using nwb, React, and Redux.
+        A TODOMVC web app using nwb, React, and Redux.
       </a></p>
 
       <p><a href="//marclundgren.github.io/backbone-react-calendar/public">Google Multi Calendar</a></p>
       <p><a href="node-checkpoints">Alloy-UI Node Checkpoints</a></p>
-    </div>
-
-    <div id="profile" class="item profile">
-      <div class="itemhead">
-        <h2>Profile</h2>
-      </div>
-
-      <p><a href="//registry.jsonresume.org/marclundgren">Resume</a></p>
     </div>
 
     <div id="links" class="item links">
@@ -58,7 +68,6 @@
       <p><a href="//github.com/marclundgren">Github</a></p>
       <p><a href="//codepen.io/marclundgren">Codepen</a></p>
       <!-- <p><a href="//medium.com/@then_marc_says">Blog</a></p> -->
-      <p><a href="/blog">Blog</a></p>
     </div>
   </div>
 
